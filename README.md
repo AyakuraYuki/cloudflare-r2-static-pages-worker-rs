@@ -1,19 +1,33 @@
 # cloudflare-r2-static-pages-worker-rs
 
-A Cloudflare Worker that host static pages with R2, building by Rust.
+A Cloudflare Worker that hosts static pages with R2, built by Rust.
 
 There are some rules that I customized:
 
 1. Define the `Content-Type` of Apple Universal Links config `apple-app-site-association` to `application/json`.
-2. Define the `index.html` file as the default pages entrance in R2.
+2. Define the `index.html` file as the default website entrance in R2.
 
 ## Deploy
 
-I don't have plan to make a deploy template.
+I don't have a plan to make a deploy template.
 
-To deploy this worker, consider to clone this repository and modify wrangler.toml, edit the value of `name` and `r2_buckets` to what ever you want, and if you want to change the pages entrance, edit the value of `vars.ENTRANCE`.
+To deploy this worker, consider cloning this repository and modifying the `wrangler.toml`, edit the value of `name` and `r2_buckets` to whatever you want, and if you want to change the entrance of the page, edit the value of `vars.ENTRANCE`.
 
-After that, run `wrangler deploy` and follow the Wrangler Deployment Instruction to deploy this worker into your Cloudflare account.
+After that, run `wrangler deploy` and follow the Wrangler Deployment Instructions to deploy this worker into your Cloudflare account.
+
+## Configurations
+
+### R2 Bucket
+
+I assign an array with a single element binding as `R2` to the `r2_buckets` key, it is used by my worker with `env.bucket("R2")`.
+
+So please don't change the `binding` value in `wrangler.toml`, also in Cloudflare Dashboard. Just keep it as `R2`.
+
+What you can edit is the value of binding `R2`, change it to your R2 bucket's name.
+
+### Variables
+
+I assign a variable named `ENTRANCE` to define which file will become the entrance of the page. You can change it to your website entrance file name.
 
 ## Wrangler
 
