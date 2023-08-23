@@ -1,0 +1,13 @@
+name = "cloudflare-r2-static-pages-worker-rs"
+main = "build/worker/shim.mjs"
+compatibility_date = "2023-03-22"
+
+r2_buckets = [
+    { binding = "R2", bucket_name = "p-defo-xyz", preview_bucket_name = "p-defo-xyz" }
+]
+
+[vars]
+ENTRANCE = "index.html"
+
+[build]
+command = "cargo install -q worker-build && worker-build --release"
