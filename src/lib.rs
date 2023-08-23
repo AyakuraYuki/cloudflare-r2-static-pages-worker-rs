@@ -25,6 +25,7 @@ async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
         };
     }
 
+    // access to R2 object
     let object_result = bucket.get(key).execute().await;
     let object_option = match object_result {
         Ok(option) => option,
@@ -41,10 +42,11 @@ async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
         }
     };
 
+    // prepare response headers
     let headers = build_response_headers(key, object.http_etag().as_str());
-
     object.write_http_metadata(headers.clone()).expect("error write metadata");
 
+    // prepare response body
     let body_option = match object.body() {
         Some(option) => option,
         None => {
@@ -53,6 +55,7 @@ async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
         }
     };
 
+    // return the response body
     match body_option.bytes().await {
         Ok(bs) => Ok(Response::from_bytes(bs)?.with_headers(headers)),
         Err(_) => Response::error("Object Not Found", 404)

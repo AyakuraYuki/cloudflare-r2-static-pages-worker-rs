@@ -3,7 +3,7 @@ main = "build/worker/shim.mjs"
 compatibility_date = "2023-03-22"
 
 r2_buckets = [
-    { binding = "R2", bucket_name = "p-defo-xyz", preview_bucket_name = "p-defo-xyz" }
+    { binding = "R2", bucket_name = "<change-to-your-bucket>", preview_bucket_name = "<change-to-your-bucket>" }
 ]
 
 [vars]
