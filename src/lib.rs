@@ -43,7 +43,7 @@ async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     };
 
     // prepare response headers
-    let headers = build_response_headers(key, object.http_etag().as_str());
+    let headers = build_response_headers(&key, &object.http_etag().as_str());
     object.write_http_metadata(headers.clone()).expect("error write metadata");
 
     // prepare response body
