@@ -9,7 +9,11 @@ There are some rules that I customized:
 
 ## Deploy
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/AyakuraYuki/cloudflare-r2-static-pages-worker-rs/tree/main)
+I don't have plan to make a deploy template.
+
+To deploy this worker, consider to clone this repository and modify wrangler.toml, edit the value of `name` and `r2_buckets` to what ever you want, and if you want to change the pages entrance, edit the value of `vars.ENTRANCE`.
+
+After that, run `wrangler deploy` and follow the Wrangler Deployment Instruction to deploy this worker into your Cloudflare account.
 
 ## Wrangler
 
