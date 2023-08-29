@@ -7,6 +7,14 @@ There are some rules that I customized:
 1. Define the `Content-Type` of Apple Universal Links config `apple-app-site-association` to `application/json`.
 2. Define the `index.html` file as the default website entrance in R2.
 
+## Some words from me
+
+This program is not like nginx, it doesn't support any intent like try_files, and Cloudflare Worker does not allow us to inject a nginx server.
+
+I currently have no passion for implementing it, and I am new to Rust and still need to learn Rust.
+
+Maybe there's some way that can allow us to inject an nginx server into Cloudflare Worker.
+
 ## Deploy
 
 I don't have a plan to make a deploy template.
